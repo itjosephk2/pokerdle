@@ -1,0 +1,111 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokerdle - Poker Hand Wordle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>POKERDLE</h1>
+    <p>Guess the 5-card poker hand</p>
+    <button class="help-btn" id="helpBtn">?</button>
+  </header>
+
+  <div class="hint-area">
+    <span class="hand-type-hint" id="handTypeHint"></span>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-swatch exact"></div> Exact
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch card-match"></div> Right card, wrong slot
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch rank-match"></div> Right rank
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch suit-match"></div> Right suit
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch miss"></div> Miss
+    </div>
+  </div>
+
+  <div class="guess-grid" id="guessGrid"></div>
+
+  <div class="picker-area" id="pickerArea">
+    <div class="current-selection" id="currentSelection"></div>
+    <div class="duplicate-warning" id="duplicateWarning"></div>
+    <div class="rank-selector" id="rankSelector"></div>
+    <div class="suit-selector" id="suitSelector"></div>
+    <div class="action-buttons">
+      <button class="action-btn undo-btn" id="undoBtn">⌫ Undo</button>
+      <button class="action-btn clear-btn" id="clearBtn">Clear</button>
+      <button class="action-btn submit-btn" id="submitBtn" disabled>Guess</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Help Modal -->
+  <div class="modal-overlay" id="helpModal">
+    <div class="modal">
+      <button class="modal-close" id="helpClose">&times;</button>
+      <h2>How to Play</h2>
+      <p>Guess the secret <strong>5-card poker hand</strong> in <strong>6 tries</strong>.</p>
+      <p>The hand type (e.g., "Two Pair", "Flush") is shown as a hint. Use your poker knowledge to narrow it down!</p>
+      <p>Both hands are <strong>sorted ascending by rank</strong>. Each card slot is compared directly:</p>
+      <ul>
+        <li><span class="inline-swatch" style="background:#538d4e"></span> <strong>Green</strong> — Exact match: right
+          rank and suit in this slot</li>
+        <li><span class="inline-swatch" style="background:#c77a2e"></span> <strong>Orange</strong> — This exact card is
+          in the hand but in a different slot</li>
+        <li><span class="inline-swatch" style="background:#b59f3b"></span> <strong>Yellow</strong> — Rank matches this
+          slot but suit is wrong</li>
+        <li><span class="inline-swatch" style="background:#5865a8"></span> <strong>Blue</strong> — Suit matches this
+          slot but rank is wrong</li>
+        <li><span class="inline-swatch" style="background:#3a3a3c"></span> <strong>Gray</strong> — Neither rank nor suit
+          matches this slot</li>
+      </ul>
+      <p><strong>Smart sorting:</strong> When you guess cards of the same rank (pairs, trips), the game automatically
+        arranges them to best match the secret hand. If you have the right cards, they'll align.</p>
+      <p><strong>Winning:</strong> Get all 5 cards correct. If same-rank cards are just swapped, it still counts as a
+        win!</p>
+      <p><strong>Strategy tips:</strong></p>
+      <ul>
+        <li>The hand type tells you the structure — use it!</li>
+        <li>Green = locked in, perfect</li>
+        <li>Orange = you have this card, it belongs in another slot</li>
+        <li>Yellow = right rank, try different suits</li>
+        <li>Blue = right suit, try different ranks</li>
+      </ul>
+      <p><strong>Keyboard shortcuts:</strong></p>
+      <ul>
+        <li><strong>2-9, J, Q, K, A</strong> — Select rank</li>
+        <li><strong>1</strong> — Select rank 10</li>
+        <li><strong>S, H, D, C</strong> — Select suit (after rank)</li>
+        <li><strong>Enter</strong> — Submit guess</li>
+        <li><strong>Backspace</strong> — Remove last card</li>
+        <li><strong>Escape</strong> — Clear current guess</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Game Over Modal -->
+  <div class="modal-overlay" id="gameOverModal">
+    <div class="modal">
+      <div class="game-over-content" id="gameOverContent"></div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+
+</html>

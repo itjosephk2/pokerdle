@@ -1,0 +1,667 @@
+/* styles.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==================== HEADER ==================== */
+
+header {
+  width: 100%;
+  text-align: center;
+  padding: 12px 0 8px;
+  border-bottom: 1px solid #333;
+  position: relative;
+}
+
+header h1 {
+  font-size: 2rem;
+  letter-spacing: 4px;
+  color: #e2b714;
+}
+
+header p {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.help-btn {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+  border: 2px solid #555;
+  color: #ccc;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.help-btn:hover {
+  border-color: #e2b714;
+  color: #e2b714;
+}
+
+/* ==================== HINT AREA ==================== */
+
+.hint-area {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.hint-area .hand-type-hint {
+  font-size: 1rem;
+  color: #e2b714;
+  font-weight: bold;
+  padding: 4px 16px;
+  background: rgba(226, 183, 20, 0.1);
+  border: 1px solid rgba(226, 183, 20, 0.3);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* ==================== LEGEND ==================== */
+
+.legend {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 8px;
+  font-size: 0.75rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+
+.legend-swatch.exact {
+  background: #538d4e;
+}
+
+.legend-swatch.card-match {
+  background: #c77a2e;
+}
+
+.legend-swatch.rank-match {
+  background: #b59f3b;
+}
+
+.legend-swatch.suit-match {
+  background: #5865a8;
+}
+
+.legend-swatch.miss {
+  background: #3a3a3c;
+}
+
+/* ==================== GUESS GRID ==================== */
+
+.guess-grid {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 8px;
+}
+
+.guess-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.guess-card {
+  width: 64px;
+  height: 88px;
+  border: 2px solid #444;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #16213e;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.guess-card .rank {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.guess-card .suit {
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.guess-card.current-slot {
+  border-color: #e2b714;
+  box-shadow: 0 0 8px rgba(226, 183, 20, 0.4);
+}
+
+.guess-card.filled {
+  border-color: #666;
+}
+
+/* ==================== FEEDBACK COLORS ==================== */
+
+.guess-card.exact {
+  background: #538d4e;
+  border-color: #538d4e;
+  animation: flipIn 0.5s ease;
+}
+
+.guess-card.card-match {
+  background: #c77a2e;
+  border-color: #c77a2e;
+  animation: flipIn 0.5s ease;
+}
+
+.guess-card.rank-match {
+  background: #b59f3b;
+  border-color: #b59f3b;
+  animation: flipIn 0.5s ease;
+}
+
+.guess-card.suit-match {
+  background: #5865a8;
+  border-color: #5865a8;
+  animation: flipIn 0.5s ease;
+}
+
+.guess-card.miss {
+  background: #3a3a3c;
+  border-color: #3a3a3c;
+  animation: flipIn 0.5s ease;
+}
+
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes flipIn {
+  0% {
+    transform: scaleY(0);
+  }
+
+  50% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.guess-card.pop {
+  animation: popIn 0.15s ease;
+}
+
+/* ==================== CARD PICKER ==================== */
+
+.picker-area {
+  margin-top: 12px;
+  width: 100%;
+  max-width: 500px;
+  padding: 0 8px;
+}
+
+.current-selection {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 10px;
+  min-height: 50px;
+  align-items: center;
+}
+
+.current-selection .mini-card {
+  width: 44px;
+  height: 60px;
+  border: 2px solid #555;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  background: #16213e;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.current-selection .mini-card:hover {
+  border-color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.current-selection .mini-card .suit {
+  font-size: 1rem;
+}
+
+.current-selection .mini-card.empty {
+  border-style: dashed;
+  border-color: #444;
+}
+
+.current-selection .mini-card.active-slot {
+  border-color: #e2b714;
+  box-shadow: 0 0 6px rgba(226, 183, 20, 0.3);
+}
+
+/* ==================== RANK SELECTOR ==================== */
+
+.rank-selector {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.rank-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background: #16213e;
+  color: #ddd;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.rank-btn:hover {
+  background: #1f3460;
+  border-color: #888;
+}
+
+.rank-btn.selected {
+  background: #e2b714;
+  color: #1a1a2e;
+  border-color: #e2b714;
+}
+
+.rank-btn.eliminated {
+  opacity: 0.3;
+  text-decoration: line-through;
+}
+
+.rank-btn.confirmed {
+  background: #538d4e;
+  color: white;
+  border-color: #538d4e;
+}
+
+.rank-btn.present {
+  background: #b59f3b;
+  color: white;
+  border-color: #b59f3b;
+}
+
+/* ==================== SUIT SELECTOR ==================== */
+
+.suit-selector {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.suit-btn {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #555;
+  border-radius: 8px;
+  background: #16213e;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suit-btn:hover {
+  background: #1f3460;
+  border-color: #888;
+}
+
+.suit-btn.selected {
+  border-color: #e2b714;
+  background: rgba(226, 183, 20, 0.15);
+  box-shadow: 0 0 8px rgba(226, 183, 20, 0.3);
+}
+
+.suit-btn.eliminated {
+  opacity: 0.3;
+}
+
+.suit-btn.confirmed {
+  background: rgba(83, 141, 78, 0.3);
+  border-color: #538d4e;
+}
+
+.suit-btn.present {
+  background: rgba(88, 101, 168, 0.3);
+  border-color: #5865a8;
+}
+
+.suit-hearts,
+.suit-diamonds {
+  color: #e74c3c;
+}
+
+.suit-clubs,
+.suit-spades {
+  color: #ddd;
+}
+
+/* ==================== ACTION BUTTONS ==================== */
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.action-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn {
+  background: #538d4e;
+  color: white;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #6aaf5e;
+}
+
+.submit-btn:disabled {
+  background: #3a3a3c;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.clear-btn {
+  background: #3a3a3c;
+  color: #ccc;
+}
+
+.clear-btn:hover {
+  background: #555;
+}
+
+.undo-btn {
+  background: #5865a8;
+  color: white;
+}
+
+.undo-btn:hover {
+  background: #6b78bb;
+}
+
+/* ==================== DUPLICATE WARNING ==================== */
+
+.duplicate-warning {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  text-align: center;
+  min-height: 1.2em;
+  margin-top: 2px;
+}
+
+/* ==================== TOAST ==================== */
+
+.toast {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #eee;
+  color: #1a1a2e;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  z-index: 200;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+/* ==================== MODALS ==================== */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 420px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal h2 {
+  color: #e2b714;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.modal p,
+.modal li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #ccc;
+  margin-bottom: 8px;
+}
+
+.modal ul {
+  padding-left: 20px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+.inline-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+/* ==================== GAME OVER CONTENT ==================== */
+
+.game-over-content {
+  text-align: center;
+}
+
+.game-over-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.game-over-content .secret-hand {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.game-over-content .reveal-card {
+  width: 56px;
+  height: 78px;
+  border: 2px solid #e2b714;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background: #16213e;
+}
+
+.game-over-content .reveal-card .rank {
+  font-size: 1.1rem;
+}
+
+.game-over-content .reveal-card .suit {
+  font-size: 1.3rem;
+}
+
+.game-over-content .hand-name {
+  font-size: 1.2rem;
+  color: #e2b714;
+  margin: 8px 0;
+}
+
+.game-over-content .stats {
+  margin: 12px 0;
+  font-size: 0.95rem;
+}
+
+.share-btn {
+  background: #538d4e;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 8px 4px;
+}
+
+.share-btn:hover {
+  background: #6aaf5e;
+}
+
+.new-game-btn {
+  background: #e2b714;
+  color: #1a1a2e;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 8px 4px;
+}
+
+.new-game-btn:hover {
+  background: #f0c830;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 400px) {
+  .guess-card {
+    width: 56px;
+    height: 76px;
+    font-size: 0.9rem;
+  }
+
+  .guess-card .suit {
+    font-size: 1.2rem;
+  }
+
+  .rank-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .suit-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 1.4rem;
+  }
+}
