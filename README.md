@@ -2,7 +2,7 @@
 
 A Wordle-style poker hand guessing game. Guess the secret 5-card poker hand in 6 tries using combinatorics and poker knowledge.
 
-**[Play Pokerdle](https://yourusername.github.io/pokerdle/)**
+**[Play Pokerdle](https://itjosephk2.github.io/pokerdle/)**
 
 ![Pokerdle Screenshot](screenshot.png)
 
@@ -78,27 +78,23 @@ Pure vanilla — no frameworks, no build step, no dependencies.
 ### File Structure
 
     pokerdle/
-    ├── index.html    # Markup and modals
+    ├── index.html    # Markup, SEO, modals
     ├── styles.css    # All styling and animations
     ├── game.js       # Game logic, rendering, events
+    ├── og-image.png  # Social share preview (1200x630)
     └── README.md     # This file
 
 ## Run Locally
 
 Clone the repo and open `index.html` in your browser. That's it. No server needed, no `npm install`.
 
-    git clone https://github.com/yourusername/pokerdle.git
+    git clone https://github.com/itjosephk2/pokerdle.git
     cd pokerdle
     open index.html
 
-## Deploy to GitHub Pages
+## Deploy
 
-1. Push to a GitHub repository
-2. Go to **Settings → Pages**
-3. Set source to **Deploy from a branch**
-4. Select **main** branch, **/ (root)** folder
-5. Hit **Save**
-6. Your game will be live at `https://yourusername.github.io/pokerdle/`
+Already live on GitHub Pages at **[itjosephk2.github.io/pokerdle](https://itjosephk2.github.io/pokerdle/)**.
 
 ## Share Results
 
